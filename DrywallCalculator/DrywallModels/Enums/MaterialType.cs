@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace DrywallModels.Enums
 {
-    internal class MaterialType
+    public enum MaterialType
     {
+         zwykła,
+         expert,
+         woda,
+         ogień
+
     }
 }

@@ -1,4 +1,5 @@
-﻿using DrywallModels.Models;
+﻿using DrywallModels.Enums;
+using DrywallModels.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -16,8 +17,8 @@ namespace DrywallDB.Data
         }
 
         public DbSet<WallType> WallTypes { get; set; }
-        
 
+        public DbSet<Drywall> Drywalls{ get; set; }
 
 
         //FluentSets
@@ -48,6 +49,22 @@ namespace DrywallDB.Data
             modelBuilder.Entity<WallType>()
                 .Property(w=>w.SecondLayer)
                 .IsRequired(false);
+
+           //DrywallConfig
+
+
+            modelBuilder.Entity<Drywall>()
+                .HasKey(d => d.Id);
+
+            modelBuilder.Entity<Drywall>()
+                .Property(d => d.Length)
+                .HasMaxLength(1000)
+                .IsRequired();
+
+            modelBuilder.Entity<Drywall>()
+                .HasOne(d => d.WallType).WithMany(d => d.Drywalls).HasForeignKey(d => d.WallTypeId);
+
+
 
 
             

@@ -19,5 +19,7 @@ namespace DrywallModels.Models
 
         public MaterialType FirstLayer { get; set; }
         public MaterialType? SecondLayer { get; set; }
+
+        public List<Drywall> Drywalls { get; set; }
     }
 }

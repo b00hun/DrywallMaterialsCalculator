@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DrywallDB.Repository
 {
-    public class DrywallRepository
+    public class DrywallRepository : IDrywallRepository
     {
         
             private ApplicationDbContext _context;

@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DrywallBLL\DrywallBLL.csproj" />
     <ProjectReference Include="..\DrywallDB\DrywallDB.csproj" />
     <ProjectReference Include="..\DrywallModels\DrywallModels.csproj" />
   </ItemGroup>

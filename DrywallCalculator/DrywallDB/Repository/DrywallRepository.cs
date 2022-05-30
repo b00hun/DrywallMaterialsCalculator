@@ -12,7 +12,7 @@ namespace DrywallDB.Repository
     public class DrywallRepository : IDrywallRepository
     {
         
-            private ApplicationDbContext _context;
+            private readonly ApplicationDbContext _context;
 
             public DrywallRepository(ApplicationDbContext context)
             {

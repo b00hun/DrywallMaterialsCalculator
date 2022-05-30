@@ -11,7 +11,7 @@ namespace DrywallDB.Repository
 {
     public class WallTypeRepository : IWallTypeRepository
     {
-        private ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
 
         public WallTypeRepository(ApplicationDbContext context)
         {

@@ -103,5 +103,24 @@ namespace DrywallCalculator.Controllers
                 return View();
             }
         }
+
+        // GET: WallTypeController/DeleteAll
+        public ActionResult DeleteAll()
+        {
+            
+            return View();
+        }
+
+        // POST: WallTypeController/DeleteAll
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteAllData()
+        {
+            
+            _WallTypeService.DeleteAllData();
+            return RedirectToAction(nameof(Index));
+            
+            
+        }
     }
 }

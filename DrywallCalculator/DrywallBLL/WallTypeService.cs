@@ -37,5 +37,10 @@ namespace DrywallBLL
         {
             _repository.Delete(id);
         }
+
+        public void DeleteAllData()
+        {
+            _repository.DeleteAll();
+        }
     }
 }

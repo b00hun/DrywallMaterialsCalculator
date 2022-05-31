@@ -16,5 +16,7 @@ namespace DrywallDB.Repository
         public void Update (WallType wallType);
 
         public void Delete (int id);
+
+        public void DeleteAll();
     }
 }

@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewData["Title"] = "DeleteAll";
+}
+
+<h1>DeleteAll</h1>
+
+<h3>Czy na pewno chcesz usunąć wszystkie wpisy?</h3>
+
+<form asp-action="DeleteAllData">
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Wróć do listy</a>
+    </form>

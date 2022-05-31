@@ -61,6 +61,14 @@ namespace DrywallDB.Repository
             _context.WallTypes.Remove(wall);
             _context.SaveChanges();
         }
-
+         public void DeleteAll()
+        {
+            var wallList = GetAllData();
+            foreach(WallType wallType in wallList)
+            {
+                _context.WallTypes.Remove(wallType);
+            }
+            _context.SaveChanges();
+        }
     }
 }

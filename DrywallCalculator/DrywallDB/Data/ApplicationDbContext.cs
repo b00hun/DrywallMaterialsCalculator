@@ -37,10 +37,11 @@ namespace DrywallDB.Data
             modelBuilder.Entity<WallType>()
                 .Property(w => w.Width)
                 .IsRequired()
-                .HasDefaultValue(0.05);
+                .HasDefaultValue(0.05)
+                .HasColumnType("decimal(10,3)");
 
             modelBuilder.Entity<WallType>()
-                .Property(w => w.Height)
+                .Property(w => w.Height).HasColumnType("decimal(10,3)")
                 .IsRequired();
 
             modelBuilder.Entity<WallType>()

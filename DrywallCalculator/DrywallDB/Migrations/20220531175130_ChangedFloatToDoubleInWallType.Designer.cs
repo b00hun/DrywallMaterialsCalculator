@@ -3,6 +3,7 @@ using DrywallDB.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DrywallDB.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220531175130_ChangedFloatToDoubleInWallType")]
+    partial class ChangedFloatToDoubleInWallType
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -54,8 +56,9 @@ namespace DrywallDB.Migrations
                     b.Property<int>("FirstLayer")
                         .HasColumnType("int");
 
-                    b.Property<decimal>("Height")
-                        .HasColumnType("decimal(10,3)");
+                    b.Property<double>("Height")
+                        .HasPrecision(10, 2)
+                        .HasColumnType("float(10)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -65,10 +68,11 @@ namespace DrywallDB.Migrations
                     b.Property<int?>("SecondLayer")
                         .HasColumnType("int");
 
-                    b.Property<decimal>("Width")
+                    b.Property<double>("Width")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("decimal(10,3)")
-                        .HasDefaultValue(0.05m);
+                        .HasPrecision(10, 2)
+                        .HasColumnType("float(10)")
+                        .HasDefaultValue(0.050000000000000003);
 
                     b.HasKey("Id");
 

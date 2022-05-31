@@ -13,13 +13,13 @@ namespace DrywallModels.Models
 
         public string Name { get; set; }
 
-        public float Height { get; set; }
+        public double Height { get; set; }
 
-        public float Width { get; set; }
+        public double? Width { get; set; }
 
         public MaterialType FirstLayer { get; set; }
         public MaterialType? SecondLayer { get; set; }
 
-        public List<Drywall> Drywalls { get; set; }
+        public List<Drywall>? Drywalls { get; set; }
     }
 }

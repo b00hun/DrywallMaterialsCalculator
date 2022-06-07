@@ -13,7 +13,7 @@ namespace DrywallBLL
 
         public List<Drywall> GetAllData();
 
-        public void Create(WallType wallType);
+        public void Create(Drywall drywall);
 
         public void Delete(int id);
 

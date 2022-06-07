@@ -1,41 +1,67 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using DrywallBLL;
+using DrywallCalculator.ViewModels;
+using DrywallModels.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace DrywallCalculator.Controllers
 {
     public class DrywallController : Controller
     {
+
+        private readonly IDrywallService _drywallService;
+        private readonly IWallTypeService _wallTypeService;
+
+        public DrywallController(IDrywallService drywallService, IWallTypeService wallTypeService)
+        {
+            _wallTypeService = wallTypeService;
+            _drywallService = drywallService;
+        }
+
         // GET: DrywallController
         public ActionResult Index()
         {
-            return View();
+            List<Drywall> model = _drywallService.GetAllData();
+            return View(model);
         }
 
-        // GET: DrywallController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
+        
 
         // GET: DrywallController/Create
         public ActionResult Create()
         {
-            return View();
+            DrywallCreateViewModel DrywallViewModel = new()
+            {
+                Drywall = new(),
+                WallTypeList = _wallTypeService.GetAll().Select(c => new SelectListItem
+                {
+                    Text = c.Name,
+                    Value = c.Id.ToString()
+                })
+               
+            };
+            return View(DrywallViewModel);
         }
 
         // POST: DrywallController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(DrywallCreateViewModel drywallModel)
         {
-            try
+            if (!ModelState.IsValid)
             {
+
+                return View(drywallModel);
+                
+            }
+
+                _drywallService.Create(drywallModel.Drywall);
                 return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            
+            
+              return View();
+            
         }
 
         // GET: DrywallController/Edit/5

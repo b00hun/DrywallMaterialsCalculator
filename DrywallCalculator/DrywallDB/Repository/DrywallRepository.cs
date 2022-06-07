@@ -36,9 +36,9 @@ namespace DrywallDB.Repository
                 return walls;
             }
 
-            public void Create(WallType wallType)
+            public void Create(Drywall drywall)
             {
-                _context.Add(wallType);
+                _context.Add(drywall);
                 _context.SaveChanges();
             }
 

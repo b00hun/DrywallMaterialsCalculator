@@ -26,9 +26,9 @@ namespace DrywallBLL
             return _repository.GetAllData();
         }
 
-        public void Create(WallType wallType)
+        public void Create(Drywall drywall)
         {
-            _repository.Create(wallType);
+            _repository.Create(drywall);
         }
 
         public void Delete(int id) 

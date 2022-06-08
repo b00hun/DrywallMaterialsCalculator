@@ -7,13 +7,14 @@ namespace DrywallCalculator.ViewModels
 {
     public class DrywallCreateViewModel
     {
+        
         public IEnumerable<Drywall>? Drywalls{ get; set; }
 
-        [Required]
-        public Drywall? Drywall{ get; set; }
+        [Required(ErrorMessage ="Wymagane")]
+        public Drywall Drywall{ get; set; }
         
         
         [ValidateNever]
-        public IEnumerable<SelectListItem> WallTypeList { get; set; }
+        public IEnumerable<SelectListItem>? WallTypeList { get; set; }
     }
 }

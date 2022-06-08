@@ -37,40 +37,20 @@ namespace DrywallCalculator.Controllers
         }
 
 
-
-        // GET: DrywallController/Create
-        //public ActionResult Create()
-        //{
-        //    DrywallCreateViewModel DrywallViewModel = new()
-        //    {
-        //        Drywall = new(),
-        //        WallTypeList = _wallTypeService.GetAll().Select(c => new SelectListItem
-        //        {
-        //            Text = c.Name,
-        //            Value = c.Id.ToString()
-        //        })
-               
-        //    };
-        //    return View(DrywallViewModel);
-        //}
-
-        // POST: DrywallController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Index(DrywallCreateViewModel drywallModel)
         {
-            if (!ModelState.IsValid)
+            if (drywallModel.Drywall.Length == 0 || drywallModel.Drywall.WallType == null )
             {
 
-                return View(drywallModel);
-                
+                return RedirectToAction(nameof(Index));
+
             }
 
             _drywallService.Create(drywallModel.Drywall);
             return RedirectToAction(nameof(Index));
-            
-            
-              
+      
             
         }
 

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<DrywallModels.Models.Drywall>
+﻿@model DrywallCalculator.ViewModels.DrywallCreateViewModel
 
 @{
     ViewData["Title"] = "Index";
@@ -6,36 +6,52 @@
 
 <h1>Index</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+<form asp-action="Index" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Drywall.Length" class="control-label"></label>
+                <input asp-for="Drywall.Length" class="form-control" />
+                <span asp-validation-for="Drywall.Length" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Drywall.WallTypeId" class="control-label">Typ ściany</label>
+                <select asp-for="Drywall.WallTypeId" class ="form-control" asp-items="@Model.WallTypeList" class="form-select">
+                    <option disabled selected>--Typ ściany--</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Length)
+                @Html.DisplayNameFor(model => model.Drywall.WallType)
+                
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.WallType)
+                @Html.DisplayNameFor(model => model.Drywall.Length)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+        @if (Model.Drywalls != null){
+            @foreach (var item in Model.Drywalls) {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Length)
-            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.WallType.Name)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                @Html.DisplayFor(modelItem => item.Length)
+            </td>
+            <td>
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
 }
+        }
+
     </tbody>
 </table>

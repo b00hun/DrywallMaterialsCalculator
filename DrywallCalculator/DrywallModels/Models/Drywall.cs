@@ -15,6 +15,6 @@ namespace DrywallModels.Models
 
         public int WallTypeId { get; set; }
 
-        public WallType WallType { get; set; }
+        public WallType? WallType { get; set; }
     }
 }
